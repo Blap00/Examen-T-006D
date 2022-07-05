@@ -10,7 +10,6 @@ urlpatterns = [
     path('Galeria-Aves/', Aves, name='Avess'),
     path('quienesSomos/', quienesSomos, name='Quienes Somos'),
     path('registrarSolicitud.html', registrarSolicitud, name='Registrar Solicitud'),
-    path('terminosycondiciones.html', tyc, name='Terminos y condiciones'),
     path("revisarSolicitudes.html", revisarSolicitudes, name="Revisar Solicitudes"),
     path('borrarsolicitud/<id>',borrarSolicitud, name="Borrar Solicitud"),
     path('api/v1/logout',logout,name='logout'),
