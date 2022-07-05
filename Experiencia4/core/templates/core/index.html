@@ -1,0 +1,261 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    <!-- CSS Personalizado -->
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'core/css/style.css'%}">
+    <link rel="icon" href="{% static 'core/img/logo3.png'%}">
+    <title>Little pets Shop || INICIO</title>
+    <link rel="stylesheet" href="{% static 'core/css/index.css' %}">
+  </head>
+
+<body class="d-flex flex-column min-vh-100" style="background-color:#fffcf8">
+      
+        <!-- Barra de navegacion superior -->
+        <nav class="navbar navbar-expand-lg navbar-light sticky-top " style="background-color: #5495ca;">
+          <div class="container-fluid">
+            <img src="{% static 'core/img/logo3.png'%}" height="50px" alt="Littlepetshop" style="border-radius: 50%;"> 
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+              <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNavDropdown">
+              <ul class="navbar-nav me-auto">
+                <li class="nav-item">
+                  <a class="nav-link active"  aria-current="page" href="#">Inicio</a>
+                </li>
+                <li class="nav-item dropdown">
+                  <a class="nav-link dropdown-toggle" href="" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                    Galeria De articulos
+                  </a>
+                  <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                    <li><a class="dropdown-item" href="{% url 'Caninos' %}">Articulos Caninos</a></li>
+                    <li><a class="dropdown-item" href="{% url 'Felinos' %}">Articulos Felinos</a></li>
+                    <li><a class="dropdown-item" href="{% url 'Avess' %}">Articulos de Aves</a></li>
+                  </ul>
+                  <li class="nav-item">
+                    <a class="nav-link" href="{% url 'Quienes Somos' %}">Quienes somos</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" aria-current="page" href="{% url 'Catalogo' %}">Catalogo</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" aria-current="page" href="{% url 'seguimiento' %}">Seguimiento</a>
+                  </li>
+                </li>
+              </ul>
+              <div>
+                
+                  {% if not esta_logueado %}
+                  <button class="btn btn-light btn-outline-success" data-bs-toggle="offcanvas" data-bs-target="#offcanvasExample" >Iniciar Sesion</button>
+                  {% else %}
+                  <li class="d-flex nav-item dropdown">
+                  <a class="nav-link btn btn-light dropdown-toggle text-black" href="" id="userDropdownMenu" role="button" data-bs-toggle="dropdown" aria-expanded="false" >
+                    Bienvenido {{ Usuario.username | capfirst }}
+                  </a>
+                  <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                    <li><a class="dropdown-item" href="{% url 'Perfil' %}">Mi perfil</a></li>
+                    <li><a class="dropdown-item" href="{% url 'Revisar Solicitudes' %}">Revisar solicitudes</a></li>
+                    <li><a class="dropdown-item"  id="logout">Cerrar Sesion</a></li>
+                  </ul>
+                </li>
+                  {% endif %}
+              </div>
+              </div>
+            </div>
+          </div>
+        </nav>
+        <script type="text/javascript">
+          function revisarDatos(){
+              if(document.getElementById("checkTyM").checked == false ||
+                 document.getElementsById("nombreEntrada").value.length == 0 ||
+                 document.getElementsById("emailEntrada").value.length == 0 ||
+                 document.getElementsById("descripcionEntrada").value.length == 0){
+                alert("Debes aceptar los terminos y condiciones y/o llenar los campos obligatorios");
+              }
+              else{
+                window.location.replace("registrarSolicitud.html");
+              }
+            }
+          </script>
+        <div class="offcanvas offcanvas-end" data-bs-scroll="true" data-bs-backdrop="false" tabindex="0" id="offcanvasExample" aria-labelledby="offcanvasExampleLabel">
+          <div class="offcanvas-header">
+            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+          </div>
+          <div class="offcanvas-body" style="background-color: #ffffff;">
+            <div class="container">
+              <div class="align-middle">
+                <div class="text-center">
+                  <h3>Iniciar sesión </h3>
+                </div>
+                <div class="card-body mt-3">
+                  <div class="text-center">
+                  <form name="login" action="/" method="post" id="formularioLogin">
+                    {% csrf_token %}
+                    {{ form.as_p }}
+                    <div class="input-group form-group mt-3">
+                      <input type="text" class="form-control text-center p-3" placeholder="Usuario" name="username">
+                    </div>
+                    <div class="input-group form-group mt-3">
+                      <input type="password" class="form-control text-center p-3" placeholder="Contraseña" name="password">
+                    </div>
+                    <div class="text-center">
+                      <input type="submit" value="Iniciar sesión" class="btn btn-success mt-3 w-100 p-2" name="login-btn">
+                    </div>
+                    <div class="text-center" style="margin-top: 5%">
+                      <a href="resetPassword.html"  style="color: #cc7127 ;"> Olvide mi contraseña</a>
+                    </div>
+                    </div>
+                    <input type="button" value="Registrarse" class="btn btn-outline-primary mt-3 w-100 p-2" data-bs-dismiss="offcanvas" data-bs-toggle="modal" data-bs-target="#modalRegistro" name="register-btn">
+                  </form>
+                  {% if error_login %}
+                  <div class="alert alert-danger mt-3" role="alert">
+                    Datos ingresados incorrectos
+                  </div>
+                  {% elif esta_registrado %}
+                  <div class="alert alert-danger mt-3" role="alert">
+                    {{mensaje}}
+                  </div>
+                  {% elif registro_vacio %}
+                  <div class="alert alert-danger mt-3" role="alert">
+                    {{mensajeRegistro}}
+                  </div>
+                  {% endif %}
+
+                    <!-- Modal -->
+                    <div class="modal fade" id="modalRegistro" data-bs-backdrop="false" data-bs-keyboard="false" tabindex="-1" aria-labelledby="modalRegistro" aria-hidden="true" style="background-color: #00000097;">
+                  <div class="modal-dialog modal-dialog-centered">
+                    <div class="modal-content">
+                      <div class="text-center" style="margin-top: 5%;">
+                        <img src="{% static 'core/img/logo3.png'%}" alt="" height="70px">
+                        <h3>Registrarse</h3>
+                      </div>
+                      <form name="register" method="post" id="formularioRegistro">
+                        {% csrf_token %}
+                        <div class="container modal-body">
+                          <!--username-->
+                          <div class="input-group form-group col-md-3">
+                            <label for="usernameRegistro" class="form-label"></label>
+                            <input type="text" class="form-control text-center p-3" placeholder="Usuario" name="usernameRegistro" id="usernameRegistro"></textarea>
+                          </div>
+                          <!--correo-->
+                          <div class="input-group form-group col-md-3">
+                            <label for="emailRegistro" class="form-label"></label>
+                            <input type="email" class="form-control text-center p-3" placeholder="Correo" name="emailRegistro" id="emailRegistro"></textarea>
+                          </div>
+                          <!--contrasena-->
+                          <div class="input-group form-group col-md-3">
+                            <label for="passwordRegistro" class="form-label"></label>
+                            <input type="password" class="form-control text-center p-3" placeholder="Contraseña" name="passwordRegistro" pattern="[^]{8,}" id="passwordRegistro"></textarea>
+                          </div>
+                          <div class="text-center">
+                            <p style="color: #27272797;"><b><i>contraseña minima de 8 caracteres</i></b></p>
+                            <input type="submit" bold value="Registrar" class="btn btn-success mt-3 w-100 p-2" name="registrar-btn">
+                            <input type="submit" value="Cancelar" class="btn btn-secondary mt-3 w-100 p-2" name="cancelar-btn" data-bs-dismiss="modal">
+                          </div>
+                        </div>
+                      </form>
+                    </div>
+                  </div>
+                </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+  <!-- Carrusel de la pagina -->
+  <div class="carousel slide carousel-fade" data-bs-ride="carousel" id="carouselExampleIndicators">
+    <div class="carousel-indicators">
+        <button aria-label="Slide 1" class="active" data-bs-slide-to="0" data-bs-target="#carouselExampleIndicators" type="button"></button> <button aria-label="Slide 2" data-bs-slide-to="1" data-bs-target="#carouselExampleIndicators" type="button"></button> <button aria-label="Slide 3" data-bs-slide-to="2" data-bs-target="#carouselExampleIndicators" type="button"></button>
+    </div>
+    <div class="carousel-inner">
+        <div class="carousel-item active">
+            <img alt="..." class="d-block w-auto" src="{% static 'core/img/Carrusel/1gato1200x720.jpg'%}">
+            <div style="border-radius: 25px; background: rgba(0, 0, 0, 0.5);" class="carousel-caption">
+              <h5 class="animated fadeInDown" style="animation-delay: 1s">Articulos para Felinos</h5>
+              <p class="animated fadeInUp d-none d-md-block" style="animation-delay: 2s">Revise nuestra Galeria con Articulos para Gatos, especial para esos felinos regalones.</p>
+              <p class="animated fadeInUp" style="animation-delay: 3s">Haz click <a href="{% url 'Felinos' %}" style="color: #FFFFFF">aqui</a></p>
+          </div>
+        </div>
+        <div class="carousel-item">
+            <img alt="..." class=" d-block w-auto" src="{% static 'core/img/Carrusel/2perros1200x720.jpg'%}">
+            <div style="border-radius: 25px; background: rgba(0, 0, 0, 0.5);"  class="carousel-caption">
+              <h5 class="animated fadeInDown" style="animation-delay: 1s">Articulos para Perros</h5>
+              <p class="animated fadeInUp d-none d-md-block" style="animation-delay: 2s">Revise nuestra Galeria especial para caninos, todo tipo de articulos para estos maravillosos animales.</p>
+              <p class="animated fadeInUp" style="animation-delay: 3s">Haz click <a href="{% url 'Caninos' %}" style="color: #FFFFFF">aqui</a></p>
+          </div>
+        </div>
+        <div class="carousel-item">
+            <img alt="..." class="d-block w-auto" src="{% static 'core/img/Carrusel/3pajaros1200x720.jpg'%}">
+            <div style="border-radius: 25px; background: rgba(0, 0, 0, 0.5);" class="carousel-caption d-none d-md-block">
+                <h5 class="animated fadeInDown" style="animation-delay: 1s">¿Deseas ver nuestros productos para aves?</h5>
+                <p class="animated fadeInUp d-none d-md-block" style="animation-delay: 2s">Aparte de productos para caninos y felinos tenemos para nuestras veloces y tiernas Aves</p>
+                <p class="animated fadeInUp" style="animation-delay: 3s">Haz click <a href="{% url 'Avess' %}" style="color: #FFFFFF">aqui</a></p>
+            </div>
+        </div>
+    </div><button class="carousel-control-prev" data-bs-slide="prev" data-bs-target="#carouselExampleIndicators" type="button"><span aria-hidden="true" class="carousel-control-prev-icon"></span> <span class="visually-hidden">Previous</span></button> <button class="carousel-control-next" data-bs-slide="next" data-bs-target="#carouselExampleIndicators" type="button"><span aria-hidden="true" class="carousel-control-next-icon"></span> <span class="visually-hidden">Next</span></button>
+</div>
+
+
+ 
+
+ <!-- Footer de la pagina --> 
+
+  <div class="mt-auto" style="background-color: #5495ca7d; margin-top: 2%;">
+  <footer class="container py-3">
+    <div class="row">
+      <div class="col-md">
+        <center><a href="#"><img src="{% static 'core/img/logo3.png'%}" height="50px" alt="Littlepetshop" style="border-radius: 50%;"></a>
+          <small><li class="d-block  text-muted">Duoc UC Sede Maipú</li></small>
+          <small><li class="d-block  text-muted">Ingenieria informatica</li></small>
+          <small><li class="d-block  text-muted">©2022 Derechos reservados</li></small>
+        </center>
+      </div>
+      <div class="col-6 col-md">
+        <h5>Acerca de</h5>
+        <ul class="list-unstyled text-small">
+          <li><a class="text-muted" href="https://github.com/Blap00/Experiencia4_Palma_hayashi_Poblete_Guimaraes">Link repositorio</a></li>
+          <li><a class="text-muted" href="https://github.com/edobazz">Github Profesor</a></li>
+          <li><a class="text-muted" href="https://www.duoc.cl/">Duoc UC</a></li>
+          <li><a class="text-muted" href="contactanos.html">Contactanos</a></li>
+        </ul>
+      </div>
+      <div class="col-6 col-md">
+        <h5><img src="{% static 'core/img/iconoInsta.png'%}" width="30px" alt="iconoInsta"> Nuestras redes</h5>
+        <ul class="list-unstyled text-small">
+          <li><a class="text-muted" href="https://www.instagram.com/_little.pets.shop_?igshid=YmMyMTA2M2Y/">@_little.pets.shop</a></li>
+          <li><a class="text-muted" href="https://www.instagram.com/_._Blap_._/">@_._Blap_._</a></li>
+          <li><a class="text-muted" href="https://www.instagram.com/live_.itho._evil/">@live_.itho._evil</a></li>
+          <li><a class="text-muted" href="https://www.instagram.com/vixo_guimaraes23/">@vixo_guimaraes23</a></li>
+          <li><a class="text-muted" href="https://www.instagram.com/meiikaren/">@meiikaren</a></li>
+        </ul>
+      </div>
+      
+      <div class="col-6 col-md">
+        <h5>Equipo (Github)</h5>
+        <ul class="list-unstyled text-small">
+          <li><a class="text-muted" href="https://github.com/Blap00">Fabian Palma</a></li>
+          <li><a class="text-muted" href="https://github.com/ithoayashi">Hitoshen Hayashi</a></li>
+          <li><a class="text-muted" href="https://github.com/vixo700">Vicente Guimaraes</a></li>
+          <li><a class="text-muted" href="https://github.com/kapobleteg">Karen Poblete</a></li>
+        </ul>
+      </div>
+    </div>
+  </footer>
+  </div>
+
+    <!-- Bootstrap Bundle with Popper -->
+    
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="{% static 'core/js/Logout.js' %}"></script>
+    {% if error_login %}
+      <script >window.addEventListener('load', function() {('Datos incorrectos')}, false);</script>
+    {% endif %}
+  </body>
+</html>

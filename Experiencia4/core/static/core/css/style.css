@@ -1,0 +1,65 @@
+#formComprar{
+  display:inline;
+}
+
+.carousel-item::before{
+    content:"";
+    display: block;
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    background: rgb(0, 0, 0);
+    opacity: 0.3;
+}
+
+ /*-- responsive del mapa */
+/* Start: Google Maps Responsive */
+.map-responsive {
+    overflow:hidden;
+    padding-bottom:400px; /*Reduce este valor si el mapa fuera muy alto, por ejemplo 250px, puedes usar porcentajes, 50%*/
+    position:relative;
+    height:0;
+}
+.map-responsive iframe{
+    left:0;
+    top:0;
+    height:100%;
+    width:100%;
+    position:absolute;
+}
+/* End: Google Maps Responsive */
+
+.responsive-youtube{
+    position: relative;
+    overflow: hidden;
+    padding-bottom: 56.25%; 
+    height: 0;
+  }
+  .responsive-youtube iframe{
+    position: absolute;
+    top:0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+  }
+#botonContactanos{
+    margin: 0;
+}
+
+.responsive-youtube{
+    position: relative;
+    overflow: hidden;
+    padding-bottom: 56.25%; 
+    height: 0;
+  }
+.responsive-youtube iframe{
+    position: absolute;
+    top:0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+  }
+
+

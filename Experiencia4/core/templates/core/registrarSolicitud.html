@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+     <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    <link rel="icon" href="{% static 'CommunityPlant/img/logo.png' %}">
+    <title>Solicitud</title>
+</head>
+    
+    <body class="d-flex flex-column min-vh-100" style="background-color:#fffcf8">
+      <!-- Barra de navegacion superior -->
+      <nav class="navbar navbar-expand-lg navbar-light sticky-top " style="background-color: #1D8348">
+        <div class="container-fluid">
+          <img src="{% static 'CommunityPlant/img/logo.png' %}" height="50px" alt="Community Plant"> 
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarNavDropdown">
+            <ul class="navbar-nav me-auto">
+              <li class="nav-item">
+                <a class="nav-link" aria-current="page" href="/">Inicio</a>
+
+              </li>
+              <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                  Galeria De Fotos
+                </a>
+                <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                  <li><a class="dropdown-item" href="PlantasExteriores.html">Plantas De Exteriores</a></li>
+                  <li><a class="dropdown-item" href="PlantasInteriores.html">Plantas De Interiores</a></li>
+                  <li><a class="dropdown-item" href="TiposDeArboles.html">Arboles De Diferentes Tamaños</a></li>
+                </ul>
+                <li class="nav-item">
+                  <a class="nav-link" href="quienesSomos.html">Quienes somos</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" aria-current="page" href="seguimiento.html">Seguimiento</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" aria-current="page" href="catalogo.html">Catalogo</a>
+                </li>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </nav> 
+
+<style>
+p.note {
+  color: red;
+}
+
+input, textarea {
+  border-radius: 5px;
+  border: 1px solid #ccc;
+  padding: 4px;;
+  width: 300px;
+  margin-top: 10px;
+}
+
+label.error {
+    color: red;
+    margin-top: 5px;
+}
+
+input.error, textarea.error {
+    border: 1px dashed red;
+    color: red;
+}
+</style>
+
+<script type="text/javascript">
+function revisarDatos(){
+    if(document.getElementById("checkTyM").checked == false ||
+       document.getElementsById("nombreEntrada").value.length == 0 ||
+       document.getElementsById("emailEntrada").value.length == 0 ||
+       document.getElementsById("descripcionEntrada").value.length == 0){
+      alert("Debes aceptar los terminos y condiciones y/o llenar los campos obligatorios");
+    }
+    else{
+      window.location.replace("registrarSolicitud.html");
+    }
+  }
+</script>
+
+
+<div class="container">
+<br><h1>Solicitud de venta de planta</h1><br>
+<form method="post" action="" class="row g-3" id="formularioSolicitud" name="formularioSolicitud" >
+  {% csrf_token %}
+  <!--nombre-->
+  <div class="col-md-6">
+    <input type="text" class="form-control" name="nombreEntrada" id="nombreEntrada" placeholder="Nombre completo">
+  </div>
+  <!--correo-->
+  <div class="col-md-6">
+    <input type="email" class="form-control" name="emailEntrada" id="emailEntrada" placeholder="Direccion correo">
+  <div id="emailHelp" class="form-text">Nunca compartiremos tu correo con nadie, solo con fines de contactos</div>
+  </div>
+  <!--descripcion-->
+  <div class="col">
+    <label for="descripcionEntrada" class="form-label">Ingresa tu solicitud de planta (Nombre, especie, cuidados, etc)</label>
+    <textarea class="form-control" name="descripcionEntrada" id="descripcionEntrada" rows="3"></textarea>
+  </div>
+  <!--adjuntar archivo-->
+  <div class="col-12">
+    <label for="formFileSm" class="form-label">Adjuntar archivo</label>
+    <input class="form-control form-control-sm" type="file" name="formFileSm">
+  </div>
+  <!--checkbox-->
+  <div class="col-12">
+    <div class="form-check check">
+      <input class="form-check-input" type="checkbox" value="" id="checkTyM" name="checkTyM" required>
+      <label class="form-check-label" for="checkTyM">
+        Acepto los <a href="terminosycondiciones.html">terminos y condiciones</a>
+      </label>
+    </div>
+  </div>
+
+  <div class="col-12">
+    <button class="btn btn-success" type="submit" id="enviarFormulario" style="margin-bottom: 2%;" onclick="revisarDatos()" >Enviar solicitud</button>
+  </div>
+</form>
+<p class='text-center'>{{mensaje}}</p>
+</div>
+
+ <!-- Footer de la pagina --> 
+  <div class="mt-auto" style="background-color: #04a05f59; margin-top: 2%;">
+  <footer class="container py-3">
+    <div class="row">
+      <div class="col-md">
+        <center><a href="#"><img src="{% static 'CommunityPlant/img/logo.png' %}" height="50px" alt="Community Plant"></a>
+        <small><li class="d-block  text-muted">©2022 Derechos reservados</li></small>
+        <small><li class="d-block  text-muted">Duoc UC Sede Maipú</li></small>
+        <small><li class="d-block  text-muted">Ingenieria informatica</li></small></center>
+      </div>
+      <div class="col-6 col-md">
+        <h5>Equipo (Github)</h5>
+        <ul class="list-unstyled text-small">
+          <li><a class="text-muted" href="https://github.com/XLangley">Alfredo Galdames</a></li>
+          <li><a class="text-muted" href="https://github.com/Sfreimx">Fabian Muñoz</a></li>
+          <li><a class="text-muted" href="https://github.com/notGabo">Gabriel Soto</a></li>
+          <li><a class="text-muted" href="https://github.com/je4n83">Jean Venegas</a></li>
+        </ul>
+      </div>
+      <div class="col-6 col-md">
+        <h5><img src="{% static 'CommunityPlant/img/iconoInsta.png' %}" width="30px" alt="iconoInsta"> Nuestras redes</h5>
+        <ul class="list-unstyled text-small">
+          <li><a class="text-muted" href="https://www.instagram.com/CommunityPlant/">@CommunityPlant</a></li>
+          <li><a class="text-muted" href="https://www.instagram.com/_.langley/">@_.langley</a></li>
+          <li><a class="text-muted" href="https://www.instagram.com/_fabianski_ff/">@_fabianski_ff/</a></li>
+          <li><a class="text-muted" href="https://www.instagram.com/naflep/">@naflep</a></li>
+          <li><a class="text-muted" href="https://www.instagram.com/44jean__/">@44jean__</a></li>
+        </ul>
+      </div>
+      <div class="col-6 col-md">
+        <h5>Acerca de</h5>
+        <ul class="list-unstyled text-small">
+          <li><a class="text-muted" href="https://github.com/notGabo/Experiencia-2_Mu-ozGaldamesSotoVenegas_006D">Link repositorio</a></li>
+          <li><a class="text-muted" href="https://github.com/edobazz">Github Profesor</a></li>
+          <li><a class="text-muted" href="https://www.duoc.cl/">Duoc UC</a></li>
+          <li><a class="text-muted" href="contactanos.html">Contactanos</a></li>
+        </ul>
+      </div>
+    </div>
+  </footer>
+  </div>
+  <!-- Fin de la pagina -->
+    <!-- Bootstrap Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/jquery-validation@1.19.3/dist/jquery.validate.js"></script>
+    <script src="{% static 'CommunityPlant/js/validacionSolicitud.js' %}"></script>
+  </body>
+</html>
+
+<!--       _
+       .__(.)< (Profe si no nos pone un 7 el gato se va a morir aplastado)      
+        \___)   
+
+
+
+   ---.-------.. *yunque
+  '-._     :_.-'
+      ) _ ( 
+     '-' '-' 
+        
+     \   /\
+     )  ( ') < (CUACK)
+    (  /  )
+     \(__)|
+ ~~~~~~~~~~~~~~~~~~-->
+
+</body>
+</html>
+

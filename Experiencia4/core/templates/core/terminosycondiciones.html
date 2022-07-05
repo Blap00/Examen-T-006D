@@ -1,0 +1,82 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    <!-- CSS Personalizado -->
+    <link rel="stylesheet" href="./css/style.css">
+
+    <link rel="icon" href="img/logo.png">
+
+    <title>Community Plant</title>
+  </head>
+
+   <!-- Comienzo del body -->
+  <body class="d-flex flex-column min-vh-100" style="background-color:#fffCf8">
+    <center><H1>PROFE POR FAVOR</H1>
+    <H2>PONGANOS UN 7</H2>
+    <H3>O MORIRA OTRO GATITO</H3></center>
+    <p class="container"> <a href="/">< Pagina principal </a> </p>
+    <pre id="gatotruco" class="container ">
+        <h4>
+                          _
+                      .__(.)< (Profe si no nos pone un 7 el gato se va a morir aplastado)      
+                       \___)   
+
+
+
+                                           ---.-------.. *yunque
+                                          '-._     :_.-'
+                                              ) _ ( 
+                                             '-' '-' 
+
+                                             \   /\
+                                             )  ( ') < (CUACK)
+                                            (  /  )
+                                             \(__)|
+    </h4></pre>
+<link rel="icon" href="./img/logo.png">
+<script type="text/javascript">
+function revisarNota() {
+    var nota = document.getElementById("notaxd").value;
+    parseInt(nota);
+        if (nota == null || nota == ' ' || nota == 0 ){
+            alert('¿Como es eso de que no nos quiere poner nota?🧐🧐');
+        }
+        else if (nota == 7) {
+            document.getElementById("gatotruco").innerHTML = ("<center><img src='http://www.drodd.com/images10/funny-cat-gifs19.gif'></img></center>");
+            alert("Salvo al gatito!11!!1!!!");
+            window.open("https://youtu.be/A_6wm8HVaVY?t=3");
+        } else if (nota < 7) {
+            alert("Acaba de matar otro gatito...");
+            document.getElementById("gatotruco").innerHTML = ("<center><img src='https://c.tenor.com/bNLdWjv-mMUAAAAC/dead-chat-xd-dead-cat-xd.gif'></img></center>");
+        } else if (nota > 7) {
+            alert("Por mi feliz que nos ponga un "+nota+" pero solo se puede hasta 7 lamentablemente");
+            document.getElementById("gatotruco").innerHTML = ("<center><img src='https://c.tenor.com/MdkTAaFGhRUAAAAM/cat-standing.gif'></img></center>");
+        } 
+}
+</script>
+
+<center>
+        <label for="nota">Nota:</label>
+        <input id="notaxd" name="nota" type="number" placeholder="7" min="1" max="7" step="0.1">
+        <input id="botonNotaxd"type="button" value="Poner nota" onclick="revisarNota();">
+</center>
+
+  <!-- Fin de la pagina -->
+    <!-- Optional JavaScript; choose one of the two! -->
+
+    <!-- Option 1: Bootstrap Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+
+    <!-- Option 2: Separate Popper and Bootstrap JS -->
+    <!-- a -->
+    <!--
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js" integrity="sha384-7+zCNj/IqJ95wo16oMtfsKbZ9ccEh31eOz1HGyDuCQ6wgnyJNSYdrPa03rtR1zdB" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.min.js" integrity="sha384-QJHtvGhmr9XOIpI6YVutG+2QOK9T+ZnN4kzFN1RtK3zEFEIsxhlmWl5/YESvpZ13" crossorigin="anonymous"></script>
+    -->
+  </body>
+</html>

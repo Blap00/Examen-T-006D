@@ -1,0 +1,258 @@
+<!doctype html>
+<html lang="es">
+  {% load static %}
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    <!-- CSS Personalizado -->
+    <link rel="stylesheet" href="{% static 'core/css/style.css' %}">
+    <link rel="icon" href="{% static 'core/img/logo3.png' %}">
+    <title>Little Pets Shop || QS</title>
+  </head>
+
+   <!-- Comienzo del body -->
+  <body style="background-color:#fffcf8">
+
+        <!-- Barra de navegacion superior -->
+        <nav class="navbar navbar-expand-lg navbar-light sticky-top " style="background-color: #5495ca;">
+          <div class="container-fluid">
+            <img src="{% static 'core/img/logo3.png'%}" height="50px" alt="Littlepetshop" style="border-radius: 50%;"> 
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+              <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNavDropdown">
+              <ul class="navbar-nav me-auto">
+                <li class="nav-item">
+                  <a class="nav-link active"  aria-current="page" href="{% url 'index' %}">Inicio</a>
+                </li>
+                <li class="nav-item dropdown">
+                  <a class="nav-link dropdown-toggle" href="" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                    Galeria De articulos
+                  </a>
+                  <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                    <li><a class="dropdown-item" href="{% url 'Caninos' %}">Articulos Caninos</a></li>
+                    <li><a class="dropdown-item" href="{% url 'Felinos' %}">Articulos Felinos</a></li>
+                    <li><a class="dropdown-item" href="{% url 'Avess' %}">Articulos de Aves</a></li>
+                  </ul>
+                  <li class="nav-item">
+                    <a class="nav-link" href="{% url 'Quienes Somos' %}">Quienes somos</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" aria-current="page" href="{% url 'Catalogo' %}">Catalogo</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" aria-current="page" href="{% url 'seguimiento' %}">Seguimiento</a>
+                  </li>
+                </li>
+              </ul>
+              <div>
+                
+                  {% if not esta_logueado %}
+                  <button class="btn btn-light btn-outline-success" data-bs-toggle="offcanvas" data-bs-target="#offcanvasExample" >Iniciar Sesion</button>
+                  {% else %}
+                  <li class="d-flex nav-item dropdown">
+                  <a class="nav-link btn btn-light dropdown-toggle text-black" href="" id="userDropdownMenu" role="button" data-bs-toggle="dropdown" aria-expanded="false" >
+                    Bienvenido {{ Usuario.username | capfirst }}
+                  </a>
+                  <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                    <li><a class="dropdown-item" href="{% url 'Perfil' %}">Mi perfil</a></li>
+                    <li><a class="dropdown-item" href="{% url 'Revisar Solicitudes' %}">Revisar solicitudes</a></li>
+                    <li><a class="dropdown-item"  id="logout">Cerrar Sesion</a></li>
+                  </ul>
+                </li>
+                  {% endif %}
+              </div>
+              </div>
+            </div>
+          </div>
+        </nav>
+ 
+<!-- logo -->
+<div class="container">
+  <div class="row">
+    <div class="col-md-12 col-sm">
+      <center><img src="{% static 'core/img/logo3.png' %}" alt="img" class="img-fluid"></center>
+    </div>
+  </div>
+</div>
+
+<!-- primera card de quienes somos -->
+<div class="container">
+  <div id="list-item-1" >
+    <div style="padding-top: 5%;">
+      <div class="col-md-12"> 
+        <CENter>
+        <h4>SÓBRE NOSOTROS</h4>
+        <P>
+          Little Pets Shop es una pequeña empresa formada por un grupo de amigos con más de 2/4 de mes días enfocada en el rubro de la venta de articulos de animales enfocado en el Bienestar Animal y diversion de este. En nuestro local ubicado en la ciudad de Santiago comuna Maipú producimos y conseguimos los materiales y productos que nos permiten asegurar la calidad que buscamos en los servicios que entregamos.</P></br>
+          En nuestros días de experiencia hemos realizado variados proyectos de decoración, bienestar, diversion de animales y sus entornos a diferentes empresas dentro de Santiago. Nos caracterizamos por entregar confianza y dedicación en la realización de nuestros proyectos, además de una minuciosa ejecución de las mantenciones. </br>
+          Queremos que los productos a favor de los animales estén siempre presentes en nuestra rutina, para que sus propiedades y beneficios les ayuden a llevar una mejor calidad de vida.
+
+        </P>
+      </CENter>
+      </div> 
+    </div>
+  </div> 
+</div>
+<!-- cierre primera card -->
+
+
+<!-- segunda card: vision de empresa --> 
+<div class="container" style="padding-top: 5%;" id="list-item-2">
+  <article class="card border-4 border-dark rounded-3 overflow-hidden flex-md-row">
+    <div class="col-img ">
+      <picture>
+        <img src="{% static 'core/img/QuienesSomos/visionDeEmpresa.png' %}" alt="" width="400px" height="300px" >
+      </picture>
+    </div>
+    <div class="col-text">
+      <div class="card-body text-start text-md-start ">
+        <h4  class="text-md-start">VISION DE LA EMPRESA</h4>
+        <p>Nuestra visión como empresa, es ser una de las mejores compañías a nivel mundial y ser reconocidos por la gran selectividad que 
+          tenemos a la hora de elegir diferentes tipos de productos para nuestros animales
+        </p>
+      </div>
+    </div>
+  </article>
+</div>
+  <!-- cierre segunda card -->  
+
+<!-- tercera card: mision de la empresa --> 
+  <div class="container" style="padding-top: 5%;" id="list-item-3">
+    <article class="card border-4 border-dark rounded-3 overflow-hidden flex-md-row">
+      <div class="col-img ">
+        <picture>
+          <img src="{% static 'core/img/QuienesSomos/nuestra mision.png' %}" alt="" width="400px" height="300px">
+        </picture>
+      </div>
+      <div class="col-text">
+        <div class="card-body text-start text-md-start ">
+          <center>
+          <h4  class="text-md-start">MISION DE LA EMPRESA</h4>
+        </center>
+          <p> Lograr crear un nombre, que represente la ayuda de crear un mundo más verde y empatico a nuestros animales, a través de la venta para la creación de espacios divertidos y tranquilos para nuestras mascotas con juguetes y accesorios unicos o poco vistas
+            en el país.
+
+             </p>
+        </div>
+      </div>
+    </article>
+ </div>
+
+<!-- cierre tercera card -->
+
+<!-- cuarta card: conocenos --> 
+
+
+<div class="container" style="padding-top: 5%;">
+  <div class="card-group ">
+    <div class="card border-1 border-dark">
+      <img src="{% static 'core/img/QuienesSomos/conocenos1.png' %}" class="card-img-top" alt="..." >
+      <div class="card-body">
+        <h5 class="card-title">Armando Mendoza</h5>
+        <p class="card-text">Administrador</p>
+      </div>
+    </div>
+    <div class="card border-1 border-dark ">
+      <img src="{% static 'core/img/QuienesSomos/conocenos2.png' %}" class="card-img-top" alt="...">
+      <div class="card-body">
+        <h5 class="card-title">Nahomí Miller</h5>
+        <p class="card-text">vendedora</p>
+      </div>
+    </div>
+    <div class="card border-1 border-dark">
+      <img src="{% static 'core/img/QuienesSomos/conocenos3.png' %}" class="card-img-top" alt="...">
+      <div class="card-body">
+        <h5 class="card-title">Francisco norambuena</h5>
+        <p class="card-text">Gestionador de eventos para ventas</p>
+      </div>
+    </div>
+    <div class="card border-1 border-dark">
+      <img src="{% static 'core/img/QuienesSomos/conocenos4.png' %}" class="card-img-top" alt="..." style="height: 11.39vw;">
+      <div class="card-body">
+        <h5 class="card-title">Madhur</h5>
+        <p class="card-text">Productor de Mercancia</p>
+      </div>
+    </div>
+  </div>
+</div>
+  <!-- cierre cuarta card -->  
+  
+  <!-- link viedeo -->
+
+
+<div class="container" style="padding-top: 7%;">
+  <h4 style="text-align: center; background-color:#04a05f59;">IMPORTANCIA DE LOS JUGUETES EN ANIMALES</h4><ce</center>
+  <div class="row">
+    <div class="col-md-2"></div>
+    <div class="col-md-8">
+      <div class="card">
+        <div class="responsive-youtube">
+            <iframe src="https://www.youtube.com/embed/UVC1IzdLJP8" width="400" height="215" frameborder="0"></iframe>
+    <div class="col-md-2"></div>
+  </div> 
+</div>
+    </div>
+  </div>
+</div>
+
+<!-- Footer de la pagina --> 
+ <div style="background-color: #04a05f59; margin-top: 3%;">
+  <footer class="container py-4">
+    <div class="row">
+      <div class="col-md">
+        <center><a href="#"><img src="{% static 'core/img/logo3.png' %}" height="50px" alt="Community Plant"></a>
+        <small><li class="d-block  text-muted">©2022 Derechos reservados</li></small>
+        <small><li class="d-block  text-muted">Duoc UC Sede Maipú</li></small>
+        <small><li class="d-block  text-muted">Ingenieria informatica</li></small></center>
+      </div>
+      <div class="col-6 col-md">
+        <h5>Equipo (Github)</h5>
+        <ul class="list-unstyled text-small">
+          <li><a class="text-muted" href="https://github.com/XLangley">Alfredo Galdames</a></li>
+          <li><a class="text-muted" href="https://github.com/Sfreimx">Fabian Muñoz</a></li>
+          <li><a class="text-muted" href="https://github.com/notGabo">Gabriel Soto</a></li>
+          <li><a class="text-muted" href="https://github.com/je4n83">Jean Venegas</a></li>
+        </ul>
+      </div>
+      <div class="col-6 col-md">
+        <h5><img src="{% static 'CommunityPlant/img/iconoInsta.png' %}" width="30px" alt="iconoInsta"> Nuestras redes</h5>
+        <ul class="list-unstyled text-small">
+          <li><a class="text-muted" href="https://www.instagram.com/CommunityPlant/">@CommunityPlant</a></li>
+          <li><a class="text-muted" href="https://www.instagram.com/_.langley/">@_.langley</a></li>
+          <li><a class="text-muted" href="https://www.instagram.com/_fabianski_ff/">@_fabianski_ff/</a></li>
+          <li><a class="text-muted" href="https://www.instagram.com/naflep/">@naflep</a></li>
+          <li><a class="text-muted" href="https://www.instagram.com/44jean__/">@44jean__</a></li>
+        </ul>
+      </div>
+      <div class="col-6 col-md">
+        <h5>Acerca de</h5>
+        <ul class="list-unstyled text-small">
+          <li><a class="text-muted" href="https://github.com/notGabo/Experiencia-2_Mu-ozGaldamesSotoVenegas_006D">Link repositorio</a></li>
+          <li><a class="text-muted" href="https://github.com/edobazz">Github Profesor</a></li>
+          <li><a class="text-muted" href="https://www.duoc.cl/">Duoc UC</a></li>
+          <li><a class="text-muted" href="contactanos.html">Contactanos</a></li>
+        </ul>
+      </div>
+    </div>
+  </footer>
+  </div>
+
+  <!-- Fin de la pagina -->
+    <!-- Optional JavaScript; choose one of the two! -->
+
+    <!-- Option 1: Bootstrap Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+
+    <!-- Option 2: Separate Popper and Bootstrap JS -->
+    <!--
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js" integrity="sha384-7+zCNj/IqJ95wo16oMtfsKbZ9ccEh31eOz1HGyDuCQ6wgnyJNSYdrPa03rtR1zdB" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.min.js" integrity="sha384-QJHtvGhmr9XOIpI6YVutG+2QOK9T+ZnN4kzFN1RtK3zEFEIsxhlmWl5/YESvpZ13" crossorigin="anonymous"></script>
+    -->
+
+    </div>
+  </body>
+</html>

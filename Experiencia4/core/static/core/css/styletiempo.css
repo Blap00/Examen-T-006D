@@ -1,0 +1,16 @@
+#contenedorT{
+    height: 70vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.fondo{
+    border-radius: 20%;
+    display: inline-block;  
+    display: grid;
+    grid-gap: 10px;
+    background: #2193b0;
+    background: -webkit-linear-gradient(to right, #6dd5ed, #2193b0);  
+    background: linear-gradient(to right, #6dd5ed, #2193b0);
+}

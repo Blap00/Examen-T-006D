@@ -1,0 +1,206 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    {% load static %}
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    <!-- CSS Personalizado -->
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'CommunityPlant/css/style.css' %}">
+    <link rel="icon" href="{% static 'CommunityPlant/img/logo.png' %}">
+    <title>Community Plant</title>
+    <style>
+        p.note {
+          color: red;
+        }
+        #FormularioContacto{
+          margin-right: 5%;
+        }
+        .map-responsive{
+          margin-left: 5%;
+        }
+        #ubicanos{
+          margin-bottom: 3%;
+        }
+        #formcontainer{
+          padding-top: 2%;
+        }
+
+        input, textarea {
+          border-radius: 5px;
+          border: 1px solid #ccc;
+          padding: 4px;;
+          width: 300px;
+          margin-top: 10px;
+        }
+
+        label.error {
+            color: red;
+            margin-top: 5px;
+        }
+
+        input.error, textarea.error {
+            border: 1px dashed red;
+            color: red;
+        }
+        </style>
+
+</head>
+
+   <!-- Comienzo del body -->
+<body class="d-flex flex-column min-vh-100" style="background-color:#fffCf8">
+
+    <nav class="navbar navbar-expand-lg navbar-light sticky-top" style="background-color: #1D8348">
+      <div class="container-fluid">
+        <img src="{% static 'CommunityPlant/img/logo.png' %}" height="50px" alt="Community Plant"> 
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNavDropdown">
+          <ul class="navbar-nav">
+            <li class="nav-item">
+
+              <a class="nav-link" aria-current="page" href="/">Inicio</a>
+
+            </li>
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                Galeria De Fotos
+              </a>
+              <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                <li><a class="dropdown-item" href="PlantasExteriores.html">Plantas De Exteriores</a></li>
+                <li><a class="dropdown-item" href="PlantasInteriores.html">Plantas De Interiores</a></li>
+                <li><a class="dropdown-item" href="TiposDeArboles.html">Arboles De Diferentes Tamaños</a></li>
+              </ul>
+              <li class="nav-item">
+                <a class="nav-link" href="quienesSomos.html">Quienes somos</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" aria-current="page" href="catalogo.html">Catalogo</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" aria-current="page" href="seguimiento.html">Seguimiento</a>
+              </li>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+<!-- inicio de formulario --> 
+    <div class="container min-vh-100" id="formcontainer">
+        <div class="row pt-5 align-items-center">
+          <div class="col-md-7">
+            <h1 class="display-4" onmouseover="mouseover(this)" onmouseout="mouseout(this)"><b>Contactanos</b></h1>
+            <hr class="bg-info">
+            <p class="pb-0 mb-0">Te invitamos a contactanos, te responderemos a la brevedad.</p>
+            <p class="text-danger small pt-0 mt-0">Los campos con el simbolo  *  son obligatorios </p>
+              <form id="FormularioContacto">
+                <div class="row form-group">
+                  <label for="nombre" class="col-form-label col-md-4">Nombre:</label>
+                  <div class="col-md-8">
+                    <input type="text" name="nombre" value="" id="nombre" class="form-control" placeholder="*">
+                  </div>
+                </div>
+                <div class="row form-group pt-3">
+                  <label for="telefono" class="col-form-label col-md-4">Numero de telefono:</label>
+                  <div class="col-md-4">
+                    <input type="number" name="telefono" value="" id="telefono" class="form-control" placeholder="(Opcional)">
+                  </div>
+                </div>
+                <div class="row form-group pt-3">
+                  <label for="email" class="col-form-label col-md-4">E-mail:</label>
+                  <div class="col-md-8">
+                    <input type="email" name="email" value="" id="email" class="form-control" placeholder="*">
+                  </div>
+                </div>
+                <div class="row form-group pt-3">
+                  <label for="mensaje" class="col-form-label col-md-4">Mensaje</label>
+                  <div class="col-md-8">
+                    <textarea name="mensaje" id="mensaje" class="form-control" rows="5" placeholder="(Opcional)"></textarea>
+                  </div>
+                </div>
+                <div class="row form-group pt-3">
+                  <label for="problema" class="col-form-label col-md-4">Tipo de problema:</label>
+                    <div class="col-md-8">
+                      <select class="form-select" name="problema" id="problema" aria-label="Default select example">
+                        <option value="0" selected="" disabled="">--Seleccionar--</option>
+                        <option value="1">Problemas de envio</option>
+                        <option value="2">Reembolso</option>
+                        <option value="3">Otros</option>
+                      </select>
+                    </div>
+                </div>
+                <div class="row form-group pt-3">
+                  <label for="archivo" class="col-form-label col-md-4">Seleccione un archivo:</label>
+                  <div class="col-md-8">
+                    <input type="file" name="archivo" value="" id="archivo" class="form-control">
+                  </div>
+                </div>
+                <div class="row form-group pt-3 col-md-3 justify-content-center">
+                  <button type="submit" class="btn btn-success"><p id="botonContactanos" onmouseover="mouseover2(this)" onmouseout="mouseout2(this)">Enviar</p></button>
+                </div>
+              </form>
+          </div>
+          <div class="col-md-5 pt-5 ">
+            <p><center><h3 id="ubicanos" onmouseover="mouseover3(this)" onmouseout="mouseout3(this)">Ubicanos en nuestra sucursal: </h3></center></p>
+            <div class="map-responsive">
+              <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3326.6140927783977!2d-70.75462978462312!3d-33.511416108030126!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x9662dcd1fe0c7bab%3A0x4d17b82a7ba77488!2sDuoc%20UC%3A%20Sede%20Maipu!5e0!3m2!1ses-419!2scl!4v1648825560235!5m2!1ses-419!2scl" width="500" height="500" frameborder="0" style="border:0"></iframe>
+            </div>
+          </div>
+        </div>
+      </div>
+<!-- fin de formulario --> 
+
+ <!-- Footer de la pagina --> 
+   <div class="mt-auto" style="background-color: #04a05f59; margin-top: 2%;">
+      <footer class="container py-4">
+        <div class="row">
+          <div class="col-md">
+            <center><a href="#"><img src="{% static 'CommunityPlant/img/logo.png'%}" height="50px" alt="Community Plant"></a>
+            <small><li class="d-block  text-muted">©2022 Derechos reservados</li></small>
+            <small><li class="d-block  text-muted">Duoc UC Sede Maipú</li></small>
+            <small><li class="d-block  text-muted">Ingenieria informatica</li></small></center>
+          </div>
+          <div class="col-6 col-md">
+            <h5>Equipo (Github)</h5>
+            <ul class="list-unstyled text-small">
+              <li><a class="text-muted" href="https://github.com/XLangley">Alfredo Galdames</a></li>
+              <li><a class="text-muted" href="https://github.com/Sfreimx">Fabian Muñoz</a></li>
+              <li><a class="text-muted" href="https://github.com/notGabo">Gabriel Soto</a></li>
+              <li><a class="text-muted" href="https://github.com/je4n83">Jean Venegas</a></li>
+            </ul>
+          </div>
+          <div class="col-6 col-md">
+            <h5><img src="{% static 'CommunityPlant/img/iconoInsta.png'%}" width="30px" alt="iconoInsta"> Nuestras redes</h5>
+            <ul class="list-unstyled text-small">
+              <li><a class="text-muted" href="https://www.instagram.com/CommunityPlant/">@CommunityPlant</a></li>
+              <li><a class="text-muted" href="https://www.instagram.com/_.langley/">@_.langley</a></li>
+              <li><a class="text-muted" href="https://www.instagram.com/_fabianski_ff/">@_fabianski_ff/</a></li>
+              <li><a class="text-muted" href="https://www.instagram.com/naflep/">@naflep</a></li>
+              <li><a class="text-muted" href="https://www.instagram.com/44jean__/">@44jean__</a></li>
+            </ul>
+          </div>
+          <div class="col-6 col-md">
+            <h5>Acerca de</h5>
+            <ul class="list-unstyled text-small">
+              <li><a class="text-muted" href="https://github.com/notGabo/Experiencia-2_Mu-ozGaldamesSotoVenegas_006D">Link repositorio</a></li>
+              <li><a class="text-muted" href="https://github.com/edobazz">Github Profesor</a></li>
+              <li><a class="text-muted" href="https://www.duoc.cl/">Duoc UC</a></li>
+              <li><a class="text-muted" href="#">Contactanos</a></li>
+            </ul>
+          </div>
+        </div>
+      </footer>
+    </div>
+
+  <!-- Fin de la pagina -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/jquery-validation@1.19.3/dist/jquery.validate.js"></script>
+  <script src="{% static 'CommunityPlant/js/ValidacionContactanos.js' %}"></script>
+</body>
+</html>

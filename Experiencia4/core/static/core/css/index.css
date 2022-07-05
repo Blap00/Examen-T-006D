@@ -1,0 +1,21 @@
+p.note {
+    color: red;
+  }
+  
+  input, textarea {
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    padding: 4px;;
+    width: 300px;
+    margin-top: 10px;
+  }
+  
+  label.error {
+      color: red;
+      margin-top: 5px;
+  }
+  
+  input.error, textarea.error {
+      border: 1px dashed red;
+      color: red;
+  }
