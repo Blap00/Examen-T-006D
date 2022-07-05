@@ -92,15 +92,14 @@ WSGI_APPLICATION = 'Experiencia4.wsgi.application'
 
 #cx_Oracle.init_oracle_client(lib_dir='/instantclientExperiencia3')
 # cx_Oracle.init_oracle_client(lib_dir='C:/instantclient_21_3')
-# DATABASES = {
-#     'default': {
-#         'ENGINE': 'django.db.backends.oracle',
-#         #'NAME': 'tcps://adb.sa-santiago-1.oraclecloud.com:1522/g33c30b97259aa9_dbweb_tpurgent.adb.oraclecloud.com?wallet_location=/instantclient_21_3/network/admin',
-#         'NAME': 'dbWeb_medium',
-#         'USER': 'dbweb',
-#         'PASSWORD': '!Abcdario12345678'
-#       }
-# }
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.oracle',
+        'NAME': 'tcps://adb.sa-santiago-1.oraclecloud.com:1522/g974ecb06ba92b1_db20220615140332_high.adb.oraclecloud.com?wallet_location=BBDD',
+        'USER': 'ExperienciaET2022',
+        'PASSWORD': 'Examen_T1_Prog_web'
+      }
+}
 
 
 #cx_Oracle.init_oracle_client(lib_dir='/instantclient_21_3')
@@ -113,12 +112,12 @@ WSGI_APPLICATION = 'Experiencia4.wsgi.application'
 #      }
 #}
 
-DATABASES = {
-   'default': {
-       'ENGINE': 'django.db.backends.sqlite3',
-       'NAME': BASE_DIR / 'db.sqlite3',
-   }
-}
+# DATABASES = {
+#    'default': {
+#        'ENGINE': 'django.db.backends.sqlite3',
+#        'NAME': BASE_DIR / 'db.sqlite3',
+#    }
+# }
 
 
 # Password validation
