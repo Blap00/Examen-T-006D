@@ -86,12 +86,20 @@ WSGI_APPLICATION = 'Experiencia4.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/4.0/ref/settings/#databases
 
+#SQL Local
+# #   'default': {
+    #       'ENGINE': 'django.db.backends.oracle',
+    #       'NAME': '127.0.0.1:1521/xe',
+    #       'USER': 'C##Experiencia_3_Prog',
+    #       'PASSWORD': 'experiencia3',
+    #     'TEST': {
+    #         'USER': 'default_test',
+    #         'TBLSPACE': 'default_test_tbls',
+    #         'TBLSPACE_TMP': 'default_test_tbls_tmp',
+    #     },
+    # },
 
-
-
-
-#cx_Oracle.init_oracle_client(lib_dir='/instantclientExperiencia3')
-# cx_Oracle.init_oracle_client(lib_dir='C:/instantclient_21_3')
+#SQL ORACLE CLOUD
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.oracle',
@@ -100,18 +108,7 @@ DATABASES = {
         'PASSWORD': 'Examen_T1_Prog_web'
       }
 }
-
-
-#cx_Oracle.init_oracle_client(lib_dir='/instantclient_21_3')
-#DATABASES = {
-#    'default': {
-#        'ENGINE': 'django.db.backends.oracle',
-#        'NAME': 'dbweb_tpurgent',
-#        'USER': 'dbweb',
-#        'PASSWORD': '!Abcdario12345678'
-#      }
-#}
-
+# SQLITE
 # DATABASES = {
 #    'default': {
 #        'ENGINE': 'django.db.backends.sqlite3',
