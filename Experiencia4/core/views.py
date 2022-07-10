@@ -226,8 +226,8 @@ def catalogo(request):
             cant = int(request.POST['cantidad'])
             plantaComprar = CatalogoProduct.objects.get(nombrePlanta = request.POST['nombre'])
             if  1 <= cant <= plantaComprar.stockPlanta:
-                #plantaComprar.stockPlanta -= cant
-                #plantaComprar.save()
+                plantaComprar.stockPlanta -= cant
+                plantaComprar.save()
                 try:
                     if plantaComprar.nombrePlanta not in request.session['carrito']:
                         request.session['carrito'][plantaComprar.nombrePlanta] = {'cantidad':cant, 'precio_unitario':plantaComprar.precioPlanta}
@@ -255,8 +255,8 @@ def boleton(request):
         datos['carrito'] = request.session['carrito']
         precioTotal = sum([int(j['cantidad']) * int(j['precio_unitario']) for i, j in request.session['carrito'].items()])
         descuento = int(request.session['descuento']) if 'descuento' in request.session else 0
-        # print('El descuento de la sesion es de ' + str(['descuento']))
-        # print('El descuento final es de ' + str(descuento))
+        print('El descuento de la sesion es de ' + str(['descuento']))
+        print('El descuento final es de ' + str(descuento))
         request.session['descuento'] = 0
         precioTotal1 = int(precioTotal - (precioTotal*(descuento)/100))
         boletita = boleta(precioTotal = precioTotal1, fecha = datetime.datetime.now())
