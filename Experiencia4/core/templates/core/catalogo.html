@@ -58,6 +58,22 @@
               <input type="button" value="Carrito: {{carrito|length}}" class="btn btn-light btn-outline-success" data-bs-dismiss="offcanvas" data-bs-toggle="modal" data-bs-target="#modalCarrito" name="carrito-btn">
             </li>
           </div>
+          <div style="padding-left: 1vw;">
+            {% if not esta_logueado %}
+              <button class="btn btn-light btn-outline-success" data-bs-toggle="offcanvas" data-bs-target="#offcanvasExample" >Iniciar Sesion</button>
+            {% else %}
+              <li class="d-flex nav-item dropdown">
+                <a class="nav-link btn btn-light dropdown-toggle text-black" href="" id="userDropdownMenu" role="button" data-bs-toggle="dropdown" aria-expanded="false" >
+                  Bienvenido {{ Usuario.username | capfirst }}
+                </a>
+                <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                  <li><a class="dropdown-item" href="{% url 'Perfil' %}">Mi perfil</a></li>
+                  <li><a class="dropdown-item" href="{% url 'Revisar Solicitudes' %}">Revisar solicitudes</a></li>
+                  <li><a class="dropdown-item"  id="logout">Cerrar Sesion</a></li>
+                </ul>
+              </li>
+            {% endif %}
+          </div>
         </div>
       </div>
     </nav>
