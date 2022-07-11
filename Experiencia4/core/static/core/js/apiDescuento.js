@@ -1,3 +1,4 @@
+//Hasta el momento Error en C-O-R-S
 function ajaxito() {
     var codigoDescuento;
     var inputDescuento;
@@ -5,8 +6,10 @@ function ajaxito() {
     var buttonError;
     var buttonNotFound;
     $.ajax({
-        url:"http://127.0.0.1:8000/api/lista_descuento?format=json", 
+        url:"http://localhost:8000/api/lista_descuento?format=json", 
         type: "GET",
+        headers: "no-cors",
+        // header: "Access-Control-Allow-Origin: *",
             success: function(resultado){
                 for (elem of resultado){
                     codigoDescuento = elem.IdCodigo;
@@ -19,7 +22,7 @@ function ajaxito() {
                         $("#checkDescuento")[0].outerHTML = buttonSuccess;
                         $("#checkDescuento").click(ajaxito);
                         $.ajax({
-                            url:`http://127.0.0.1:8000/api/detalle_descuento/${codigoDescuento}/`,
+                            url:`http://localhost:8000/api/detalle_descuento/${codigoDescuento}/`,
                             type:"GET"
                         });
                         break;
