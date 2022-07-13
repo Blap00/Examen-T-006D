@@ -73,10 +73,11 @@
       <p class="m-0 p-0">Cantidad: {{valor.cantidad}}</p>
       <p class="m-0 p-0">Valor unitario: ${{valor.precio_unitario}}</p>
       <p class="m-0 p-0">Valor descuento: ${{valor.desc}}</p>
-      <p class="m-0 p-0">Precio: ${% widthratio valor.cantidad 1 valor.precio_unitario %}</p>
+      <p class="m-0 p-0">Precio: ${% widthratio valor.cantidad 1 valor.precio_unitario|add:valor.desc %}</p>
     </fieldset >
-    {% endfor %}
     <p>Precio total: ${{boleta.precioTotal}}</p>
+    {% endfor %}
+
     </div>
     <!-- Footer de la pagina --> 
 
