@@ -243,11 +243,11 @@ def catalogo(request):
         request.session['carrito'] = {}
     try:
         suscrito = Usuarios.objects.get(username = request.session['user']['username']).suscripcion
-    except Usuarios.DoesNotExist:
+    except (Usuarios.DoesNotExist, KeyError) as e:
         suscrito = False
     if(suscrito):
         for key in datos['carrito']:
-            datos['carrito'][key]['desc'] = -(datos['carrito'][key]['cantidad'] * datos['carrito'][key]['precio_unitario'])*0.1
+            datos['carrito'][key]['desc'] = -(datos['carrito'][key]['cantidad'] * datos['carrito'][key]['precio_unitario'])*0.05
     return render(request, 'core/catalogo.html', datos)
 
 def limpiarCarroto(request):
@@ -255,7 +255,6 @@ def limpiarCarroto(request):
     return redirect(to="Catalogo")
 
 def boleton(request):
-    
     if len(request.session['carrito']) == 0:
         return redirect(to="Catalogo")
     else:
@@ -265,15 +264,8 @@ def boleton(request):
         descuento = int(request.session['descuento']) if 'descuento' in request.session else 0
         print('El descuento de la sesion es de ' + str(['descuento']))
         print('El descuento final es de ' + str(descuento))
-        try:
-            suscrito = Usuarios.objects.get(username = request.session['user']['username']).suscripcion
-        except Usuarios.DoesNotExist:
-            suscrito = False
-        if(suscrito):
-            for key in datos['carrito']:
-                descuento1=datos['carrito'][key]['desc'] = -(datos['carrito'][key]['cantidad'] * datos['carrito'][key]['precio_unitario'])*0.1
         request.session['descuento'] = 0
-        precioTotal1 = int(precioTotal - (precioTotal*((descuento)/100) - descuento1))
+        precioTotal1 = int(precioTotal - (precioTotal*(descuento)/100))
         boletita = boleta(precioTotal = precioTotal1, fecha = datetime.datetime.now())
         boletita.save()
         datos['boleta'] = boletita
