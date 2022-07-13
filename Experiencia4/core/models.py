@@ -32,21 +32,21 @@ class CategoriaProduct(models.Model):
     nombreCategoria = models.CharField(max_length=40 ,unique=True, null=False, blank=False, verbose_name='Nombre categoria')
     class Meta:
         verbose_name_plural = 'CategoriaProduct'
-        def __str__(self):
-            return self.nombreCategoria
+    def __str__(self):
+        return self.nombreCategoria
 
 class CatalogoProduct(models.Model):
-    idPlanta = models.AutoField(primary_key=True, verbose_name='Id Producto')
-    nombrePlanta = models.CharField(max_length=30, null=False, blank=False, unique=True, verbose_name='Nombre Producto')
-    descripcionPlanta = models.CharField(max_length=500, null=False, blank=True, verbose_name='Descripcion Producto')
-    precioPlanta  = models.IntegerField(null=False,blank=False, verbose_name='Precio Producto')
+    idProduct = models.AutoField(primary_key=True, verbose_name='Id Producto')
+    nombreProducto = models.CharField(max_length=30, null=False, blank=False, unique=True, verbose_name='Nombre Producto')
+    descripcionProducto = models.CharField(max_length=500, null=False, blank=True, verbose_name='Descripcion Producto')
+    precioProducto  = models.IntegerField(null=False,blank=False, verbose_name='Precio Producto')
     categoria =  models.ForeignKey(CategoriaProduct, on_delete=models.CASCADE)
-    imagenPlanta = models.CharField(max_length=2000, verbose_name='url foto del Producto')   
-    stockPlanta = models.IntegerField(null=False, blank=False, verbose_name='Stock Producto')
+    imagenProducto = models.CharField(max_length=2000, verbose_name='url foto del Producto')   
+    stockProducto = models.IntegerField(null=False, blank=False, verbose_name='Stock Producto')
     class Meta:
         verbose_name_plural = 'CatalogoProduct'
     def __str__(self):
-        return self.nombrePlanta
+        return self.nombreProducto
 
 class boleta(models.Model):
     idBoleta = models.AutoField(primary_key=True, verbose_name='Numero boleta')
