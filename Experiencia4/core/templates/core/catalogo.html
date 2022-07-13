@@ -97,6 +97,7 @@
                                   <legend class="w-auto">{{producto}}</legend>
                                   <p class="m-0 p-0">Cantidad: {{valor.cantidad}}</p>
                                   <p class="m-0 p-0">Valor unitario: ${{valor.precio_unitario}}</p>
+                                  <p class="m-0 p-0">Valor descuento: ${{valor.desc}}</p>
                                   <p class="m-0 p-0">Precio: ${% widthratio valor.cantidad 1 valor.precio_unitario %}</p>
                                   {% csrf_token %}
                                 </fieldset >
@@ -167,66 +168,58 @@
               </form>
             {% endfor %}
                 </div>
-
             </div>
+        </div>     
+    </div>
+  <div class="mt-auto" style="background-color: #5495ca7d; margin-top: 2%;">
+    <footer class="container py-3">
+      <div class="row">
+        <div class="col-md">
+          <center><a href="#"><img src="{% static 'core/img/logo3.png'%}" height="50px" alt="Littlepetshop" style="border-radius: 50%;"></a>
+            <small><li class="d-block  text-muted">Duoc UC Sede Maipú</li></small>
+            <small><li class="d-block  text-muted">Ingenieria informatica</li></small>
+            <small><li class="d-block  text-muted">©2022 Derechos reservados</li></small>
+          </center>
         </div>
-     
-    </div>
-
-
- <!-- Footer de la pagina --> 
- <div class="mt-auto" style="background-color: #5495ca7d; margin-top: 2%;">
-  <footer class="container py-3">
-    <div class="row">
-      <div class="col-md">
-        <center><a href="#"><img src="{% static 'core/img/logo3.png'%}" height="50px" alt="Littlepetshop" style="border-radius: 50%;"></a>
-          <small><li class="d-block  text-muted">Duoc UC Sede Maipú</li></small>
-          <small><li class="d-block  text-muted">Ingenieria informatica</li></small>
-          <small><li class="d-block  text-muted">©2022 Derechos reservados</li></small>
-        </center>
+        <div class="col-6 col-md">
+          <h5>Acerca de</h5>
+          <ul class="list-unstyled text-small">
+            <li><a class="text-muted" href="https://github.com/Blap00/Experiencia4_Palma_hayashi_Poblete_Guimaraes">Link repositorio</a></li>
+            <li><a class="text-muted" href="https://github.com/edobazz">Github Profesor</a></li>
+            <li><a class="text-muted" href="https://www.duoc.cl/">Duoc UC</a></li>
+            <li><a class="text-muted" href="contactanos.html">Contactanos</a></li>
+          </ul>
+        </div>
+        <div class="col-6 col-md">
+          <h5><img src="{% static 'core/img/iconoInsta.png'%}" width="30px" alt="iconoInsta"> Nuestras redes</h5>
+          <ul class="list-unstyled text-small">
+            <li><a class="text-muted" href="https://www.instagram.com/_little.pets.shop_?igshid=YmMyMTA2M2Y/">@_little.pets.shop</a></li>
+            <li><a class="text-muted" href="https://www.instagram.com/_._Blap_._/">@_._Blap_._</a></li>
+            <li><a class="text-muted" href="https://www.instagram.com/live_.itho._evil/">@live_.itho._evil</a></li>
+            <li><a class="text-muted" href="https://www.instagram.com/vixo_guimaraes23/">@vixo_guimaraes23</a></li>
+            <li><a class="text-muted" href="https://www.instagram.com/meiikaren/">@meiikaren</a></li>
+          </ul>
+        </div>
+        
+        <div class="col-6 col-md">
+          <h5>Equipo (Github)</h5>
+          <ul class="list-unstyled text-small">
+            <li><a class="text-muted" href="https://github.com/Blap00">Fabian Palma</a></li>
+            <li><a class="text-muted" href="https://github.com/ithoayashi">Hitoshen Hayashi</a></li>
+            <li><a class="text-muted" href="https://github.com/vixo700">Vicente Guimaraes</a></li>
+            <li><a class="text-muted" href="https://github.com/kapobleteg">Karen Poblete</a></li>
+          </ul>
+        </div>
       </div>
-      <div class="col-6 col-md">
-        <h5>Acerca de</h5>
-        <ul class="list-unstyled text-small">
-          <li><a class="text-muted" href="https://github.com/Blap00/Experiencia4_Palma_hayashi_Poblete_Guimaraes">Link repositorio</a></li>
-          <li><a class="text-muted" href="https://github.com/edobazz">Github Profesor</a></li>
-          <li><a class="text-muted" href="https://www.duoc.cl/">Duoc UC</a></li>
-          <li><a class="text-muted" href="contactanos.html">Contactanos</a></li>
-        </ul>
-      </div>
-      <div class="col-6 col-md">
-        <h5><img src="{% static 'core/img/iconoInsta.png'%}" width="30px" alt="iconoInsta"> Nuestras redes</h5>
-        <ul class="list-unstyled text-small">
-          <li><a class="text-muted" href="https://www.instagram.com/_little.pets.shop_?igshid=YmMyMTA2M2Y/">@_little.pets.shop</a></li>
-          <li><a class="text-muted" href="https://www.instagram.com/_._Blap_._/">@_._Blap_._</a></li>
-          <li><a class="text-muted" href="https://www.instagram.com/live_.itho._evil/">@live_.itho._evil</a></li>
-          <li><a class="text-muted" href="https://www.instagram.com/vixo_guimaraes23/">@vixo_guimaraes23</a></li>
-          <li><a class="text-muted" href="https://www.instagram.com/meiikaren/">@meiikaren</a></li>
-        </ul>
-      </div>
-      
-      <div class="col-6 col-md">
-        <h5>Equipo (Github)</h5>
-        <ul class="list-unstyled text-small">
-          <li><a class="text-muted" href="https://github.com/Blap00">Fabian Palma</a></li>
-          <li><a class="text-muted" href="https://github.com/ithoayashi">Hitoshen Hayashi</a></li>
-          <li><a class="text-muted" href="https://github.com/vixo700">Vicente Guimaraes</a></li>
-          <li><a class="text-muted" href="https://github.com/kapobleteg">Karen Poblete</a></li>
-        </ul>
-      </div>
-    </div>
-  </footer>
+    </footer>
   </div>
-
   <!-- Fin de la pagina -->
     <!-- Mi js! -->
     <script src="https://code.jquery.com/jquery-3.6.0.min.js" ></script>
-    <script src="{% static 'core/js/apiDescuento.js'%}"> </script>
-    
+    <script src="{% static 'core/js/apiDescuento.js'%}"> </script>    
     <!-- Option 1: Bootstrap Bundle with Popper -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
     <script src="{% static 'core/js/JsonConversion.js'%} "></script>
     <script src="{% static 'core/js/apiDescuento.js' %}"></script>
   </body>
-  
 </html>

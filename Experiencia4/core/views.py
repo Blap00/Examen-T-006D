@@ -241,6 +241,13 @@ def catalogo(request):
     except KeyError as e:
         datos['carrito'] = {}
         request.session['carrito'] = {}
+    try:
+        suscrito = Usuarios.objects.get(username = request.session['user']['username']).suscripcion
+    except Usuarios.DoesNotExist:
+        suscrito = False
+    if(suscrito):
+        for key in datos['carrito']:
+            datos['carrito'][key]['desc'] = -(datos['carrito'][key]['cantidad'] * datos['carrito'][key]['precio_unitario'])*0.05
     return render(request, 'core/catalogo.html', datos)
 
 def limpiarCarroto(request):
