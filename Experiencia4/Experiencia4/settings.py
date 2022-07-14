@@ -100,21 +100,21 @@ WSGI_APPLICATION = 'Experiencia4.wsgi.application'
     # },
 
 #SQL ORACLE CLOUD
-#DATABASES = {
-#    'default': {
-#        'ENGINE': 'django.db.backends.oracle',
-#        'NAME': 'tcps://adb.sa-santiago-1.oraclecloud.com:1522/g974ecb06ba92b1_db20220615140332_high.adb.oraclecloud.com?wallet_location=BBDD',
-#        'USER': 'ExperienciaET2022',
-#        'PASSWORD': 'Examen_T1_Prog_web'
-#      }
-#}
-# SQLITE
 DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+   'default': {
+       'ENGINE': 'django.db.backends.oracle',
+       'NAME': 'tcps://adb.sa-santiago-1.oraclecloud.com:1522/g974ecb06ba92b1_db20220615140332_high.adb.oraclecloud.com?wallet_location=BBDD',
+       'USER': 'ExperienciaET2022',
+       'PASSWORD': 'Examen_T1_Prog_web'
     }
- }
+}
+# SQLITE
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.sqlite3',
+#         'NAME': BASE_DIR / 'db.sqlite3',
+#     }
+# }
 
 
 # Password validation
