@@ -1,0 +1,4 @@
+Enlace GitHub: https://github.com/Blap00/Examen-T-006D
+Bitacora de trabajo:
+Fabian Palma: front end y backend nuevo funcional + Powerpoint de presentacion
+Karen Poblete: sistema de Descuentos y ayuda con Frontend
