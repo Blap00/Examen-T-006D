@@ -22,5 +22,4 @@ urlpatterns = [
     path('boleta/',boleton, name='boleta'),
     path('suscribirse/',suscripcion, name='suscripcion'),
     path('seguimiento.html',seguimiento, name='seguimiento'),
-    path('terminos-y-condiciones/',TYC, name="Terminos_y_condiciones")
 ]
