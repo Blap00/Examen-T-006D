@@ -271,8 +271,12 @@ def boleton(request):
         if(suscrito):
             for key in datos['carrito']:
                 descuento1=datos['carrito'][key]['desc'] = -(datos['carrito'][key]['cantidad'] * datos['carrito'][key]['precio_unitario'])*0.1
+                precioTotal1 = int(precioTotal - ((precioTotal*(descuento)/100)-descuento1))
+        else:
+            for key in datos['carrito']:
+                descuento1=datos['carrito'][key]['desc'] = -(datos['carrito'][key]['cantidad'] * datos['carrito'][key]['precio_unitario'])*0.1
+                precioTotal1 = int(precioTotal - ((precioTotal*(descuento)/100)-descuento1))
         request.session['descuento'] = 0
-        precioTotal1 = int(precioTotal - ((precioTotal*(descuento)/100)-descuento1))
         boletita = boleta(precioTotal = precioTotal1, fecha = datetime.datetime.now())
         boletita.save()
         datos['boleta'] = boletita

@@ -82,11 +82,13 @@
                                   <p class="m-0 p-0">Cantidad: {{valor.cantidad}}</p>
                                   <p class="m-0 p-0">Valor unitario: ${{valor.precio_unitario}}</p>
                                   {% if not esta_logueado %}
+                                  <p class="m-0 p-0">Valor descuento: $0</p>
+                                  <p class="m-0 p-0">Precio: ${% widthratio valor.cantidad 1 valor.precio_unitario %}</p>
+
+                                  {% else %}
                                     <p class="m-0 p-0">Valor descuento: ${{valor.desc}} </p>
                                     <p class="m-0 p-0">Precio: ${% widthratio valor.cantidad 1 valor.precio_unitario|add:valor.desc %}</p>
-                                  {% else %}
-                                    <p class="m-0 p-0">Valor descuento: $0</p>
-                                    <p class="m-0 p-0">Precio: ${% widthratio valor.cantidad 1 valor.precio_unitario %}</p>
+
                                   {%endif%}
                                   {% csrf_token %}
                                 </fieldset >
