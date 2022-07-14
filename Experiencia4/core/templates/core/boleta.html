@@ -22,7 +22,7 @@
           <div class="collapse navbar-collapse" id="navbarNavDropdown">
             <ul class="navbar-nav me-auto">
               <li class="nav-item">
-                <a class="nav-link active"  aria-current="page" href="#">Inicio</a>
+                <a class="nav-link active"  aria-current="page" href="{% url 'index' %}">Inicio</a>
               </li>
               <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" href="" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
@@ -44,23 +44,6 @@
                 </li>
               </li>
             </ul>
-            <div>
-              
-                {% if not esta_logueado %}
-                <button class="btn btn-light btn-outline-success" data-bs-toggle="offcanvas" data-bs-target="#offcanvasExample" >Iniciar Sesion</button>
-                {% else %}
-                <li class="d-flex nav-item dropdown">
-                <a class="nav-link btn btn-light dropdown-toggle text-black" href="" id="userDropdownMenu" role="button" data-bs-toggle="dropdown" aria-expanded="false" >
-                  Bienvenido {{ Usuario.username | capfirst }}
-                </a>
-                <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                  <li><a class="dropdown-item" href="{% url 'Perfil' %}">Mi perfil</a></li>
-                  <li><a class="dropdown-item" href="{% url 'Revisar Solicitudes' %}">Revisar solicitudes</a></li>
-                  <li><a class="dropdown-item"  id="logout">Cerrar Sesion</a></li>
-                </ul>
-              </li>
-                {% endif %}
-            </div>
             </div>
           </div>
         </div>
@@ -73,11 +56,11 @@
       <p class="m-0 p-0">Cantidad: {{valor.cantidad}}</p>
       <p class="m-0 p-0">Valor unitario: ${{valor.precio_unitario}}</p>
       {% if not esta_logueado %}
-      <p class="m-0 p-0">Valor descuento: ${{valor.desc}}</p>
       <p class="m-0 p-0">Precio: ${% widthratio valor.cantidad 1 valor.precio_unitario|add:valor.desc %}</p>
+      <p class="m-0 p-0">Valor descuento: ${{valor.desc}}</p>
       {% else %}      
-      <p class="m-0 p-0">Valor descuento: $0</p>
       <p class="m-0 p-0">Precio: ${% widthratio valor.cantidad 1 valor.precio_unitario %}</p>
+      <p class="m-0 p-0">Valor descuento: $0</p>
       {%endif%}
       <p>Precio total: ${{boleta.precioTotal}}</p>
 
@@ -102,7 +85,7 @@
             <li><a class="text-muted" href="https://github.com/Blap00/Experiencia4_Palma_hayashi_Poblete_Guimaraes">Link repositorio</a></li>
             <li><a class="text-muted" href="https://github.com/edobazz">Github Profesor</a></li>
             <li><a class="text-muted" href="https://www.duoc.cl/">Duoc UC</a></li>
-            <li><a class="text-muted" href="contactanos.html">Contactanos</a></li>
+            <li><a class="text-muted" href="{% url 'Contactanos'%}">Contactanos</a></li>
           </ul>
         </div>
         <div class="col-6 col-md">

@@ -285,7 +285,8 @@ def boleton(request):
 
 def seguimiento(request):
     return render(request, 'core/seguimiento.html')
-
+def TYC(request):
+    return render(request, 'core/TYC.html')
 
 
 # Create your views here.datos

@@ -53,42 +53,58 @@
    <!-- Comienzo del body -->
 <body class="d-flex flex-column min-vh-100" style="background-color:#fffCf8">
 
-    <nav class="navbar navbar-expand-lg navbar-light sticky-top" style="background-color: #1D8348">
-      <div class="container-fluid">
-        <img src="{% static 'CommunityPlant/img/logo.png' %}" height="50px" alt="Community Plant"> 
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
-          <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarNavDropdown">
-          <ul class="navbar-nav">
+  <nav class="navbar navbar-expand-lg navbar-light sticky-top " style="background-color: #5495ca;">
+    <div class="container-fluid">
+      <img src="{% static 'core/img/logo3.png'%}" height="50px" alt="Littlepetshop" style="border-radius: 50%;"> 
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNavDropdown">
+        <ul class="navbar-nav me-auto">
+          <li class="nav-item">
+            <a class="nav-link "  aria-current="page" href="{% url 'index' %}">Inicio</a>
+          </li>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              Galeria De articulos
+            </a>
+            <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+              <li><a class="dropdown-item" href="{% url 'Caninos' %}">Articulos Caninos</a></li>
+              <li><a class="dropdown-item" href="{% url 'Felinos' %}">Articulos Felinos</a></li>
+              <li><a class="dropdown-item" href="{% url 'Avess' %}">Articulos de Aves</a></li>
+            </ul>
             <li class="nav-item">
-
-              <a class="nav-link" aria-current="page" href="/">Inicio</a>
-
+              <a class="nav-link" href="{% url 'Quienes Somos' %}">Quienes somos</a>
             </li>
-            <li class="nav-item dropdown">
-              <a class="nav-link dropdown-toggle" href="" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                Galeria De Fotos
-              </a>
-              <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                <li><a class="dropdown-item" href="PlantasExteriores.html">Plantas De Exteriores</a></li>
-                <li><a class="dropdown-item" href="PlantasInteriores.html">Plantas De Interiores</a></li>
-                <li><a class="dropdown-item" href="TiposDeArboles.html">Arboles De Diferentes Tamaños</a></li>
-              </ul>
-              <li class="nav-item">
-                <a class="nav-link" href="quienesSomos.html">Quienes somos</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" aria-current="page" href="catalogo.html">Catalogo</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" aria-current="page" href="seguimiento.html">Seguimiento</a>
-              </li>
+            <li class="nav-item">
+              <a class="nav-link" aria-current="page" href="{% url 'Catalogo' %}">Catalogo</a>
             </li>
-          </ul>
+            <li class="nav-item">
+              <a class="nav-link" aria-current="page" href="{% url 'seguimiento' %}">Seguimiento</a>
+            </li>
+          </li>
+        </ul>
+        <div>
+          
+            {% if not esta_logueado %}
+            <button class="btn btn-light btn-outline-success" data-bs-toggle="offcanvas" data-bs-target="#offcanvasExample" >Iniciar Sesion</button>
+            {% else %}
+            <li class="d-flex nav-item dropdown">
+            <a class="nav-link btn btn-light dropdown-toggle text-black" href="" id="userDropdownMenu" role="button" data-bs-toggle="dropdown" aria-expanded="false" >
+              Bienvenido {{ Usuario.username | capfirst }}
+            </a>
+            <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+              <li><a class="dropdown-item" href="{% url 'Perfil' %}">Mi perfil</a></li>
+              <li><a class="dropdown-item" href="{% url 'Revisar Solicitudes' %}">Revisar solicitudes</a></li>
+              <li><a class="dropdown-item"  id="logout">Cerrar Sesion</a></li>
+            </ul>
+          </li>
+            {% endif %}
+        </div>
         </div>
       </div>
-    </nav>
+    </div>
+  </nav>
 
 <!-- inicio de formulario --> 
     <div class="container min-vh-100" id="formcontainer">
@@ -148,8 +164,7 @@
           <div class="col-md-5 pt-5 ">
             <p><center><h3 id="ubicanos" onmouseover="mouseover3(this)" onmouseout="mouseout3(this)">Ubicanos en nuestra sucursal: </h3></center></p>
             <div class="map-responsive">
-              <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3326.6140927783977!2d-70.75462978462312!3d-33.511416108030126!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x9662dcd1fe0c7bab%3A0x4d17b82a7ba77488!2sDuoc%20UC%3A%20Sede%20Maipu!5e0!3m2!1ses-419!2scl!4v1648825560235!5m2!1ses-419!2scl" width="500" height="500" frameborder="0" style="border:0"></iframe>
-            </div>
+              <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d250.85839340908691!2d-70.75753480629311!3d-33.50796397062645!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x9662dcd36eb2ce1b%3A0xc32897f95bb02204!2sZoo%20Market!5e0!3m2!1ses!2scl!4v1657768121797!5m2!1ses!2scl" width="500" height="500" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>            </div>
           </div>
         </div>
       </div>
@@ -172,7 +187,7 @@
           <li><a class="text-muted" href="https://github.com/Blap00/Experiencia4_Palma_hayashi_Poblete_Guimaraes">Link repositorio</a></li>
           <li><a class="text-muted" href="https://github.com/edobazz">Github Profesor</a></li>
           <li><a class="text-muted" href="https://www.duoc.cl/">Duoc UC</a></li>
-          <li><a class="text-muted" href="contactanos.html">Contactanos</a></li>
+          <li><a class="text-muted" href="{% url 'Contactanos'%}">Contactanos</a></li>
         </ul>
       </div>
       <div class="col-6 col-md">
